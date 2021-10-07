@@ -10,6 +10,6 @@ import com.generation.farmacia.model.CategoriaModel;
 @Repository
 public interface CategoriaRepository extends JpaRepository<CategoriaModel, Long> {
 	
-	public List<CategoriaModel> FindAllByDescricaoCategoriaContainingIgnoreCase(String faixaEtaria);
+	public List<CategoriaModel> findAllByFaixaEtariaContainingIgnoreCase(String faixaEtaria);
 
 }

@@ -19,12 +19,13 @@ public class CategoriaModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idCategoria;
+	private Long idCategoria;
 	
 	@NotBlank
 	@Size(min = 5, max = 20)
 	private String faixaEtaria;
 	
+
 	@NotBlank
 	private String tarja;
 	
@@ -34,13 +35,23 @@ public class CategoriaModel {
 	@OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL) 
 	@JsonIgnoreProperties("categoria") 
 	private List<ProdutoModel> produtos;
-
-	public long getIdategoria() {
+	
+	
+	
+	public long getIdCategoria() {
 		return idCategoria;
 	}
 
-	public void setIdategoria(long idategoria) {
-		this.idCategoria = idategoria;
+	public void setIdCategoria(long idCategoria) {
+		this.idCategoria = idCategoria;
+	}
+
+	public List<ProdutoModel> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<ProdutoModel> produtos) {
+		this.produtos = produtos;
 	}
 
 	public String getFaixaEtaria() {
@@ -66,8 +77,6 @@ public class CategoriaModel {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	
-	
 	
 
 }

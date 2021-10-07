@@ -4,23 +4,31 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity(name = "tb_produto")
 public class ProdutoModel {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idProduto;
+	private Long idProduto;
 	
 	@NotBlank
 	private String Nome;
-
-	@NotBlank
+	
+	@NotNull
 	private double preco;
-
-	@NotBlank
-	private double quantidade;
+	
+	@NotNull
+	private int quantidade;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("produtos")
+	private CategoriaModel categoria;
 
 	public long getIdProduto() {
 		return idProduto;
@@ -50,9 +58,18 @@ public class ProdutoModel {
 		return quantidade;
 	}
 
-	public void setQuantidade(double quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
+	public CategoriaModel getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(CategoriaModel categoria) {
+		this.categoria = categoria;
+	}
+	
+	
 	
 }
